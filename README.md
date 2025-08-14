@@ -1,20 +1,18 @@
 
-<p align="center"><img src="/art/logo.png" height="100" alt="Laravel Fintecture"></p>
+<p align="center"><img src="/art/logo.png" height="100" alt="Laravel Telemaque"></p>
 
 <div align="center">
 
 
 # Laravel Fintecture
 
-</div>
-
-# An opinionated Fintecture wrapper for Laravel apps.
-
 [![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
 [![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
 [![Tests Action Status](https://github.com/bnzo/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/tests.yml)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+</div>
+
+An opinionated Fintecture wrapper for Laravel apps.
 
 ## Support us
 
