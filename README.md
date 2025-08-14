@@ -15,28 +15,12 @@ An opinionated Fintecture wrapper for Laravel apps.
 
 ## ⚠️ This package is under developement, do not use it in production. ⚠️
 
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-fintecture.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-fintecture)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
 
 ```bash
 composer require bnzo/laravel-fintecture
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-fintecture-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -49,20 +33,19 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'app_id' => env('FINTECTURE_APP_ID'),
+    'app_secret' => env('FINTECTURE_APP_SECRET'),
+    'base_url' => env('FINTECTURE_BASE_URL'),
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-fintecture-views"
 ```
 
 ## Usage
 
 ```php
-$fintecture = new Bnzo\Fintecture();
-echo $fintecture->echoPhrase('Hello, Bnzo!');
+use Bnzo\Fintecture\Facades\Fintecture;
+
+$response = Fintecture::generateUrl();
+echo $response->json('meta.session_id');
 ```
 
 ## Testing
