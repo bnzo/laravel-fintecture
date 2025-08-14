@@ -6,18 +6,13 @@
 
 # Laravel Fintecture
 
-[![Coding Standards Action Status](https://github.com/agicom/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/coding-standards.yml)
-[![Static Analysis Action Status](https://github.com/agicom/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/static-analysis.yml)
-[![Tests Action Status](https://github.com/agicom/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/tests.yml)
-
 </div>
 
 # An opinionated Fintecture wrapper for Laravel apps.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/17174973-bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/17174973-bnzo/laravel-fintecture)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/17174973-bnzo/laravel-fintecture/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/17174973-bnzo/laravel-fintecture/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/17174973-bnzo/laravel-fintecture/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/17174973-bnzo/laravel-fintecture/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/17174973-bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/17174973-bnzo/laravel-fintecture)
+[![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
+[![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
+[![Tests Action Status](https://github.com/bnzo/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/tests.yml)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
