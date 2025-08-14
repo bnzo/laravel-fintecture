@@ -5,6 +5,7 @@
 
 
 # Laravel Fintecture
+An opinionated Fintecture wrapper for Laravel apps.
 
 [![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
 [![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
@@ -12,7 +13,6 @@
 
 </div>
 
-An opinionated Fintecture wrapper for Laravel apps.
 
 ## Support us
 
