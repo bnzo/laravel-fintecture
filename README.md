@@ -13,6 +13,8 @@ An opinionated Fintecture wrapper for Laravel apps.
 
 </div>
 
+## ⚠️ This package is under developement, do not use it in production. ⚠️
+
 
 ## Support us
 
