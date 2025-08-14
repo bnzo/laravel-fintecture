@@ -2,7 +2,6 @@
 
 namespace Bnzo\Fintecture;
 
-use Bnzo\Fintecture\Commands\FintectureCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,9 +16,10 @@ class FintectureServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-fintecture')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_fintecture_table')
-            ->hasCommand(FintectureCommand::class);
+            ->hasConfigFile();
+    }
+
+    public function bootingPackage() {
+        
     }
 }

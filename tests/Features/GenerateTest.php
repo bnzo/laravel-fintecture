@@ -1,6 +1,6 @@
 <?php
 
-use Bnzo\Fintecture\Http\FintectureConnector;
+use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Http\Requests\CreateTheConnectUrl;
 use Bnzo\Fintecture\Http\Requests\RequestAccessToken;
 use Saloon\Http\Faking\MockResponse;
@@ -12,9 +12,7 @@ it('can generate an URL', function () {
         CreateTheConnectUrl::class => MockResponse::fixture('connect-url'),
     ]);
 
-    $connector = new FintectureConnector;
-
-    $response = $connector->send(new CreateTheConnectUrl);
+    $response = Fintecture::generateUrl();
 
     expect($response->json('meta.session_id'))->toBe('b98843c908894657899b99ced11036e8');
     expect($response->json('meta.url'))->toBe('https://connect.sandbox.fintecture.com/v2/92cedaec-22f6-4100-a3f6-4cd074a8b2c6');
