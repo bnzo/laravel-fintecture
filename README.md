@@ -10,8 +10,8 @@
 
 # An opinionated Fintecture wrapper for Laravel apps.
 
-[![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/fix-php-code-style-issues/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/fix-php-code-style-issues.yml)
-[![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/phpstan/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/phpstan.yml)
+[![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
+[![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
 [![Tests Action Status](https://github.com/bnzo/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/tests.yml)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
