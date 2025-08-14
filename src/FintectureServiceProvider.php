@@ -2,9 +2,9 @@
 
 namespace Bnzo\Fintecture;
 
+use Bnzo\Fintecture\Commands\FintectureCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Bnzo\Fintecture\Commands\FintectureCommand;
 
 class FintectureServiceProvider extends PackageServiceProvider
 {

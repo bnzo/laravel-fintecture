@@ -2,9 +2,9 @@
 
 namespace Bnzo\Fintecture\Tests;
 
+use Bnzo\Fintecture\FintectureServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Bnzo\Fintecture\FintectureServiceProvider;
 
 class TestCase extends Orchestra
 {
