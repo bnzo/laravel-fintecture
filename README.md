@@ -1,3 +1,17 @@
+
+<p align="center"><img src="/art/logo.png" height="100" alt="Laravel Fintecture"></p>
+
+<div align="center">
+
+
+# Laravel Fintecture
+
+[![Coding Standards Action Status](https://github.com/agicom/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/coding-standards.yml)
+[![Static Analysis Action Status](https://github.com/agicom/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/static-analysis.yml)
+[![Tests Action Status](https://github.com/agicom/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/agicom/laravel-fintecture/actions/workflows/tests.yml)
+
+</div>
+
 # An opinionated Fintecture wrapper for Laravel apps.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/17174973-bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/17174973-bnzo/laravel-fintecture)
