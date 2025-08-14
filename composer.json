@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "bnzo/laravel-fintecture",
+    "description": "An opinionated Fintecture wrapper for Laravel apps.",
     "keywords": [
-        ":vendor_name",
+        "bnzo",
         "laravel",
-        ":package_slug"
+        "laravel-fintecture"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/17174973-bnzo/laravel-fintecture",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "bnzo",
+            "email": "17174973+bnzo@users.noreply.github.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Bnzo\\Fintecture\\": "src/",
+            "Bnzo\\Fintecture\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Bnzo\\Fintecture\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Bnzo\\Fintecture\\FintectureServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Fintecture": "Bnzo\\Fintecture\\Facades\\Fintecture"
             }
         }
     },

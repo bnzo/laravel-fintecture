@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Bnzo\Fintecture\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FintectureCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-fintecture';
 
     public $description = 'My command';
 
