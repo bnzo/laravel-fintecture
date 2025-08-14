@@ -21,11 +21,16 @@
         </testsuite>
     </testsuites>
     <logging>
-        <junit outputFile="build/report.junit.xml"/>
+        <junit outputFile="build/report.junit.xml" />
     </logging>
     <source>
         <include>
             <directory suffix=".php">./src</directory>
         </include>
     </source>
+    <php>
+        <env name="FINTECTURE_APP_ID" value="testing" />
+        <env name="FINTECTURE_APP_SECRET" value="testing" />
+        <env name="FINTECTURE_BASE_URL" value="testing" />
+    </php>
 </phpunit>
