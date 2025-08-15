@@ -11,7 +11,7 @@ class Fintecture
     public function generate()
     {
         $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
-        $redirectUri = 'https://fintecture/callback'; // replace with your redirect URI
+        $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
 
         $pisToken = $this->pisClient->token->generate();
         if (! $pisToken->error) {
