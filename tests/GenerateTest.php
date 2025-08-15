@@ -15,5 +15,4 @@ it('can generate', function () {
     $url = app(Fintecture::class)->generate();
 
     expect($url)->toBe('https://mock.url/fintecture');
-
 });
