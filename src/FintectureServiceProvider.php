@@ -22,7 +22,6 @@ class FintectureServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
-
         $this->app->singleton(Fintecture::class, function ($app) {
             return new Fintecture(new PisClient([
                 'appId' => config('fintecture.app_id'),
@@ -31,6 +30,5 @@ class FintectureServiceProvider extends PackageServiceProvider
                 'environment' => config('fintecture.environment'),
             ]));
         });
-
     }
 }
