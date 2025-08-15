@@ -11,6 +11,7 @@ class Fintecture
     public function generate()
     {
         $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
+        $redirectUri = 'https://fintecture/callback'; // replace with your redirect URI
 
         $pisToken = $this->pisClient->token->generate();
         if (! $pisToken->error) {
@@ -21,32 +22,32 @@ class Fintecture
 
         $payload = [
             'meta' => [
-                // Info of the buyer
-                'psu_name' => 'M. John Doe',
-                'psu_email' => 'john@doe.com',
-                'psu_address' => [
-                    'street' => '5 Void Street',
-                    'zip' => '12345',
-                    'city' => 'Gotham',
-                    'country' => 'FR',
-                ],
+                'permanent' => false,
+                'psu_name' => 'Julien Lefebvre',
+                'psu_email' => 'julien.lefebre@my-business-sarl.com',
+                'psu_company' => 'My Business Sarl',
+                'psu_form' => 'SARL',
+                'expiry' => 84000,
+                'due_date' => 84000,
+                'scheduled_expiration_policy' => 'immediate',
+                'method' => 'link',
             ],
             'data' => [
-                'type' => 'SEPA',
                 'attributes' => [
-                    'amount' => '550.60',
+                    'amount' => '273.00',
                     'currency' => 'EUR',
-                    'communication' => 'Commande N°15654',
+                    'communication' => 'test',
                 ],
             ],
         ];
 
-        $connect = $this->pisClient->connect->generate($payload, $state);
+        $connect = $this->pisClient->connect->generate(
+            data: $payload,
+            state: $state,
+            redirectUri: $redirectUri, // replace with your redirect URI
+        );
         if (! $connect->error) {
-
-            eval(\Psy\sh());
-
-            $this->pisClient->redirect($connect->meta->url);
+            return $connect->meta->url;
         } else {
             echo $connect->errorMsg;
         }
