@@ -2,6 +2,7 @@
 
 namespace Bnzo\Fintecture;
 
+use Fintecture\PisClient;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -19,5 +20,15 @@ class FintectureServiceProvider extends PackageServiceProvider
             ->hasConfigFile();
     }
 
-    public function bootingPackage() {}
+    public function bootingPackage()
+    {
+        $this->app->singleton(Fintecture::class, function ($app) {
+            return new Fintecture(new PisClient([
+                'appId' => config('fintecture.app_id'),
+                'appSecret' => config('fintecture.app_secret'),
+                'privateKey' => base64_decode(config('fintecture.private_key')),
+                'environment' => config('fintecture.environment'),
+            ]));
+        });
+    }
 }

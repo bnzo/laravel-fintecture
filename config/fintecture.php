@@ -5,4 +5,6 @@ return [
     'app_id' => env('FINTECTURE_APP_ID'),
     'app_secret' => env('FINTECTURE_APP_SECRET'),
     'base_url' => env('FINTECTURE_BASE_URL'),
+    'environment' => env('FINTECTURE_ENVIRONMENT'),
+    'private_key' => env('FINTECTURE_PRIVATE_KEY'),
 ];
