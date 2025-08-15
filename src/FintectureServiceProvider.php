@@ -24,7 +24,6 @@ class FintectureServiceProvider extends PackageServiceProvider
     {
 
         $this->app->singleton(Fintecture::class, function ($app) {
-
             return new Fintecture(new PisClient([
                 'appId' => config('fintecture.app_id'),
                 'appSecret' => config('fintecture.app_secret'),
