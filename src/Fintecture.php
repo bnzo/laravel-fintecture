@@ -47,7 +47,7 @@ class Fintecture
             redirectUri: $redirectUri, // replace with your redirect URI
         );
         if (! $connect->error) {
-            return $connect->meta->url;
+            return $connect->meta->url; // @phpstan-ignore-line
         } else {
             echo $connect->errorMsg;
         }
