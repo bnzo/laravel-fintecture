@@ -2,7 +2,7 @@
 
 namespace Bnzo\Fintecture;
 
-use Fintecture\PisClient;
+use Bnzo\Fintecture\DTO\ConfigDTO;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -23,12 +23,9 @@ class FintectureServiceProvider extends PackageServiceProvider
     public function bootingPackage()
     {
         $this->app->singleton(Fintecture::class, function ($app) {
-            return new Fintecture(new PisClient([
-                'appId' => config('fintecture.app_id'),
-                'appSecret' => config('fintecture.app_secret'),
-                'privateKey' => base64_decode(config('fintecture.private_key')),
-                'environment' => config('fintecture.environment'),
-            ]));
+            $configDTO = ConfigDTO::fromArray(config('fintecture'));
+
+            return new Fintecture($configDTO);
         });
     }
 }

@@ -2,11 +2,18 @@
 
 namespace Bnzo\Fintecture;
 
+use Bnzo\Fintecture\DTO\ConfigDTO;
 use Fintecture\PisClient;
+use Psr\Http\Client\ClientInterface;
 
 class Fintecture
 {
-    public function __construct(protected PisClient $pisClient) {}
+    protected PisClient $pisClient;
+
+    public function __construct(protected ConfigDTO $configDTO, protected ?ClientInterface $client = null)
+    {
+        $this->pisClient = new PisClient($configDTO->toArray(), $this->client);
+    }
 
     public function generate()
     {
