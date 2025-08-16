@@ -2,9 +2,8 @@
 
 namespace Bnzo\Fintecture\Tests;
 
+use Bnzo\Fintecture\DTO\ConfigDTO;
 use Bnzo\Fintecture\Fintecture;
-use Fintecture\PisClient;
-use GuzzleHttp\Psr7\Response;
 use Http\Mock\Client;
 
 class FintectureTester
@@ -13,23 +12,21 @@ class FintectureTester
     {
         $client = new Client;
 
-        foreach ($responses as $data) {
-            $client->addResponse(
-                new Response(
-                    status: 200,
-                    headers: [],
-                    body: json_encode($data)
-                )
-            );
+        foreach ($responses as $response) {
+            $client->addResponse($response);
         }
 
+        config([
+            'fintecture.app_id' => env('FINTECTURE_APP_ID'),
+            'fintecture.app_secret' => env('FINTECTURE_APP_SECRET'),
+            'fintecture.environment' => env('FINTECTURE_ENVIRONMENT'),
+            'fintecture.private_key' => env('FINTECTURE_PRIVATE_KEY'),
+        ]);
+
         app()->singleton(Fintecture::class, function () use ($client) {
-            return new Fintecture(new PisClient([
-                'appId' => 'test',
-                'appSecret' => 'test',
-                'privateKey' => base64_decode(config('fintecture.private_key')),
-                'environment' => 'sandbox',
-            ], $client));
+            $configDTO = ConfigDTO::fromArray(config('fintecture'));
+
+            return new Fintecture($configDTO, $client);
         });
     }
 }
