@@ -27,7 +27,6 @@ class ConfigDTO extends ValidatedDTO
         return [
             'appId' => ['required', 'string', 'uuid'],
             'appSecret' => ['required', 'string', 'uuid'],
-            'appSecret' => ['required', 'string', 'uuid'],
             'privateKey' => ['required', new Base64PrivateKeyRule],
             'environment' => ['string', 'in:sandbox,production'],
         ];
