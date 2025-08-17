@@ -4,13 +4,19 @@ namespace Bnzo\Fintecture\Tests;
 
 use Bnzo\Fintecture\DTO\ConfigDTO;
 use Bnzo\Fintecture\Fintecture;
+use GuzzleHttp\Psr7\Response;
+use Http\Message\RequestMatcher\RequestMatcher;
 use Http\Mock\Client;
 
 class FintectureTester
 {
-    public static function mockResponses(array $responses)
+    public static function mockResponses(array $responses, bool $withToken = true)
     {
         $client = new Client;
+
+        if ($withToken) {
+            $client = self::withToken($client);
+        }
 
         foreach ($responses as $response) {
             $client->addResponse($response);
@@ -28,5 +34,18 @@ class FintectureTester
 
             return new Fintecture($configDTO, $client);
         });
+    }
+
+    public static function withToken(Client $client): Client
+    {
+        $requestMatcher = new RequestMatcher(path: 'oauth/accesstoken');
+
+        $response = new Response(
+            body: json_encode(['access_token' => 'mock_access_token'])
+        );
+
+        $client->on($requestMatcher, $response);
+
+        return $client;
     }
 }
