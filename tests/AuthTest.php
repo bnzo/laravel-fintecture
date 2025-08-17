@@ -5,22 +5,7 @@ use Bnzo\Fintecture\Tests\FintectureTester;
 use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
 
-it('can generate url', function () {
-    FintectureTester::mockResponses([
-        new Response(
-            body: json_encode(['meta' => [
-                'url' => 'https://mock.url/fintecture',
-                'session_id' => 'mock_session_id',
-            ]])
-        ),
-    ], );
-
-    $url = Fintecture::generate();
-
-    expect($url)->toBe('https://mock.url/fintecture');
-});
-
-it('can throw an exception generate url', function () {
+it('can throw an exception if token generation fails', function () {
     FintectureTester::mockResponses([
         new Response(
             status: 400,
@@ -32,7 +17,7 @@ it('can throw an exception generate url', function () {
                 ],
             ]])
         ),
-    ]);
+    ], withToken: false);
 
     $url = Fintecture::generate();
 

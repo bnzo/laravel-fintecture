@@ -4,6 +4,7 @@ namespace Bnzo\Fintecture;
 
 use Bnzo\Fintecture\DTO\ConfigDTO;
 use Fintecture\PisClient;
+use Fintecture\Util\FintectureException;
 use Psr\Http\Client\ClientInterface;
 
 class Fintecture
@@ -23,7 +24,7 @@ class Fintecture
         if (! $pisToken->error) {
             $this->pisClient->setAccessToken($pisToken); // set token of PIS client
         } else {
-            echo $pisToken->errorMsg;
+            throw new FintectureException($pisToken->errorMsg);
         }
 
         $payload = [
@@ -55,7 +56,7 @@ class Fintecture
         if (! $connect->error) {
             return $connect->meta->url; // @phpstan-ignore-line
         } else {
-            echo $connect->errorMsg;
+            throw new FintectureException($connect->errorMsg);
         }
     }
 }
