@@ -3,22 +3,26 @@
 namespace Bnzo\Fintecture\Casts;
 
 use Bnzo\Fintecture\Security\Base64PrivateKey;
-use WendellAdriel\ValidatedDTO\Casting\Castable;
-use WendellAdriel\ValidatedDTO\Exceptions\CastException;
+use Spatie\LaravelData\Casts\Cast;
+use Spatie\LaravelData\Support\Creation\CreationContext;
+use Spatie\LaravelData\Support\DataProperty;
 
-class Base64PrivateKeyCast implements Castable
+class Base64PrivateKeyCast implements Cast
 {
-    public function cast(string $property, mixed $value): mixed
+    /**
+     * Transform the raw input into the desired value.
+     */
+    public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed
     {
         if (! is_string($value)) {
-            throw new CastException("{$property} must be a base64-encoded string.");
+            throw new \InvalidArgumentException("{$property->name} must be a base64-encoded string.");
         }
 
         try {
-            // Delegate validation + decoding to your value object
+            // Delegate to your value object
             return (new Base64PrivateKey($value))->decoded();
         } catch (\Throwable $e) {
-            throw new CastException("{$property} is not a valid base64-encoded private key.");
+            throw new \InvalidArgumentException("{$property->name} is not a valid base64-encoded private key.");
         }
     }
 }
