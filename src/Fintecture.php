@@ -2,8 +2,8 @@
 
 namespace Bnzo\Fintecture;
 
-use Bnzo\Fintecture\DTO\ConfigDTO;
-use Bnzo\Fintecture\DTO\PaymentDTO;
+use Bnzo\Fintecture\Data\ConfigData;
+use Bnzo\Fintecture\Data\PaymentData;
 use Fintecture\PisClient;
 use Fintecture\Util\FintectureException;
 use Psr\Http\Client\ClientInterface;
@@ -12,12 +12,12 @@ class Fintecture
 {
     protected PisClient $pisClient;
 
-    public function __construct(protected ConfigDTO $configDTO, protected ?ClientInterface $client = null)
+    public function __construct(protected ConfigData $configDTO, protected ?ClientInterface $client = null)
     {
         $this->pisClient = new PisClient($configDTO->toArray(), $this->client);
     }
 
-    public function generate(string $state, string $redirectUri, PaymentDTO $paymentDTO)
+    public function generate(string $state, string $redirectUri, PaymentData $paymentDTO)
     {
         $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
         $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI

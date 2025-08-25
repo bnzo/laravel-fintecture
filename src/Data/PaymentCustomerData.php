@@ -1,14 +1,14 @@
 <?php
 
-namespace Bnzo\Fintecture\DTO;
+namespace Bnzo\Fintecture\Data;
 
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class PaymentCustomerDTO extends Data
+class PaymentCustomerData extends Data
 {
     public function __construct(
-        public AddressDTO|Optional $psu_address,
+        public AddressData|Optional $psu_address,
         public string $psu_email,
         public string $psu_name,
         public string|Optional|null $psu_company,

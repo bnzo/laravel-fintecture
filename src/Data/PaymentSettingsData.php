@@ -1,6 +1,6 @@
 <?php
 
-namespace Bnzo\Fintecture\DTO;
+namespace Bnzo\Fintecture\Data;
 
 use Bnzo\Fintecture\Enums\Method;
 use Bnzo\Fintecture\Enums\ScheduledExpirationPolicy;
@@ -8,7 +8,7 @@ use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\EnumCast;
 use Spatie\LaravelData\Data;
 
-class PaymentSettingsDTO extends Data
+class PaymentSettingsData extends Data
 {
     public function __construct(
         public ?bool $permanent,

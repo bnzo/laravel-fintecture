@@ -1,13 +1,13 @@
 <?php
 
-use Bnzo\Fintecture\DTO\PaymentDTO;
+use Bnzo\Fintecture\Data\PaymentData;
 use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Tests\FintectureTester;
 use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
 
 beforeEach(function () {
-    $this->PaymentDTO = PaymentDTO::from([
+    $this->PaymentDTO = PaymentData::from([
         'meta' => [
             'psu_name' => 'Julien Lefebvre',
             'psu_email' => 'julien.lefebre@my-business-sarl.com',

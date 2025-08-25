@@ -1,11 +1,11 @@
 <?php
 
-namespace Bnzo\Fintecture\DTO;
+namespace Bnzo\Fintecture\Data;
 
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class AddressDTO extends Data
+class AddressData extends Data
 {
     public function __construct(public string $street,
         public string|Optional|null $number,
