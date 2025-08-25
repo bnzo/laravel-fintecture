@@ -43,28 +43,67 @@ return [
 
 ## Usage
 
+### Create a RequestToPay URL
+
+This is a simple call using a basic PaymentRequestData object.\
+Please refer to the next section if you need more payment parameters such as currency, expiration time, and method ( link, sms, email ).
+
 ```php
 use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Facades\Fintecture;
 
-$paymentData = PaymentRequestData::from([
-    'meta' => [
-        'psu_name' => 'Julien Lefebvre',
-        'psu_email' => 'julien.lefebre@my-business-sarl.com',
-    ],
-    'data' => [
-        'attributes' => [
-            'amount' => '272.00',
-            'currency' => 'EUR',
-            'communication' => 'test',
-        ],
-    ],
-]);
+$paymentData = new PaymentRequestData(
+        new PaymentAttributesData(
+            amount: '272.00',
+            communication: 'test'
+        ),
+        new PaymentCustomerData(
+            psu_email: 'julien.lefebre@my-business-sarl.com',
+            psu_name: 'Julien Lefebvre'
+        )
+    );
 
-$paymentResponseData = Fintecture::generate('state', 'https://redirect.uri', $paymentData);
+$paymentResponseData = Fintecture::generate(
+    state: 'state', 
+    redirectUri: 'https://redirect.uri', 
+    paymentData: $paymentData
+);
 
 $paymentResponseData->url; //https://fintecture.com/v2/85b0a547-5c18-4a16-b93b-2a4f5f03127d
 $paymentResponseData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
+```
+
+### Create a PaymentRequestData
+
+Not all data fields are mandatory, please refer to each Data classes to see what you can use and what are default values.
+
+```php
+use Bnzo\Fintecture\Data\PaymentRequestData;
+
+$paymentRequestData = new PaymentRequestData(
+    new PaymentAttributesData(
+        amount: '272.00',
+        currency: Currency::EUR, // default EUR
+        communication: 'test',
+    ),
+    new PaymentCustomerData(
+        psu_email: 'julien.lefebre@my-business-sarl.com',
+        psu_name: 'Julien Lefebvre',
+        psu_address: new AddressData(
+            street: '1 rue de la paix',
+            zip: '75000',
+            city: 'Paris',
+            country: 'FR',
+        ),
+    ),
+    new PaymentSettingsData(
+        permanent: false, // default false
+        expiry: 86400, // default 84000
+        due_date: 86400, // default 84000
+        scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate, // default Immediate
+        method: Method::Link // default Link
+    ),
+);
 ```
 
 ## Testing
