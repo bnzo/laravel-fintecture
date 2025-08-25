@@ -10,12 +10,12 @@ use Spatie\LaravelData\Support\Transformation\TransformationContextFactory;
 class PaymentRequestData extends Data
 {
     public function __construct(
-        #[MapInputName('meta')]
-        public PaymentSettingsData $settings,
         #[MapInputName('data.attributes')]
         public PaymentAttributesData $attributes,
         #[MapInputName('meta')]
-        public PaymentCustomerData $customer) {}
+        public PaymentCustomerData $customer,
+        #[MapInputName('meta')]
+        public ?PaymentSettingsData $settings = new PaymentSettingsData) {}
 
     public function transform(
         null|TransformationContextFactory|TransformationContext $transformationContext = null,
