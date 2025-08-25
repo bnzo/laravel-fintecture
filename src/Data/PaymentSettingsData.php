@@ -11,9 +11,9 @@ use Spatie\LaravelData\Data;
 class PaymentSettingsData extends Data
 {
     public function __construct(
-        public ?bool $permanent,
-        public int $expiry = 84000,
-        public int $due_date = 84000,
+        public int $expiry = 86400,
+        public int $due_date = 86400,
+        public bool $permanent = false,
         #[WithCast(EnumCast::class, ScheduledExpirationPolicy::class)]
         public ScheduledExpirationPolicy $scheduled_expiration_policy = ScheduledExpirationPolicy::Immediate,
         #[WithCast(EnumCast::class, Method::class)]
