@@ -1,9 +1,26 @@
 <?php
 
+use Bnzo\Fintecture\DTO\PaymentDTO;
 use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Tests\FintectureTester;
 use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
+
+beforeEach(function () {
+    $this->PaymentDTO = PaymentDTO::from([
+        'meta' => [
+            'psu_name' => 'Julien Lefebvre',
+            'psu_email' => 'julien.lefebre@my-business-sarl.com',
+        ],
+        'data' => [
+            'attributes' => [
+                'amount' => '272.00',
+                'currency' => 'EUR',
+                'communication' => 'test',
+            ],
+        ],
+    ]);
+});
 
 it('can generate url', function () {
     FintectureTester::mockResponses([
@@ -15,7 +32,7 @@ it('can generate url', function () {
         ),
     ], );
 
-    $url = Fintecture::generate();
+    $url = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
 
     expect($url)->toBe('https://mock.url/fintecture');
 });
@@ -34,7 +51,7 @@ it('can throw an exception generate url', function () {
         ),
     ]);
 
-    $url = Fintecture::generate();
+    $url = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
 
     expect($url)->toBe('https://mock.url/fintecture');
 })->throws(FintectureException::class, 'mock_error_message');
