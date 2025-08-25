@@ -35,6 +35,7 @@ it('can generate url', function () {
     $paymentResponseData = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
 
     expect($paymentResponseData->url)->toBe('https://mock.url/fintecture');
+    expect($paymentResponseData->sessionId)->toBe('mock_session_id');
 });
 
 it('can throw an exception generate url', function () {
@@ -51,6 +52,6 @@ it('can throw an exception generate url', function () {
         ),
     ]);
 
-    $paymentResponseData = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
+    Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
 
 })->throws(FintectureException::class, 'mock_error_message');
