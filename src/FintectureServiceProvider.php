@@ -23,7 +23,7 @@ class FintectureServiceProvider extends PackageServiceProvider
     public function bootingPackage()
     {
         $this->app->singleton(Fintecture::class, function ($app) {
-            $configDTO = ConfigData::fromArray(config('fintecture'));
+            $configDTO = ConfigData::from(config('fintecture'));
 
             return new Fintecture($configDTO);
         });
