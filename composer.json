@@ -20,8 +20,7 @@
         "fintecture/fintecture-sdk-php": "^2.6",
         "illuminate/contracts": "^10.0||^11.0||^12.0",
         "spatie/laravel-data": "^4.17",
-        "spatie/laravel-package-tools": "^1.16",
-        "wendelladriel/laravel-validated-dto": "^4.2"
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "guzzlehttp/psr7": "^2.7",

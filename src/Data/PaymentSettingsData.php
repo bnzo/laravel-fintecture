@@ -14,9 +14,9 @@ class PaymentSettingsData extends Data
         public ?bool $permanent,
         public int $expiry = 84000,
         public int $due_date = 84000,
-        #[WithCast(EnumCast::class)]
+        #[WithCast(EnumCast::class, ScheduledExpirationPolicy::class)]
         public ScheduledExpirationPolicy $scheduled_expiration_policy = ScheduledExpirationPolicy::Immediate,
-        #[WithCast(EnumCast::class)]
+        #[WithCast(EnumCast::class, Method::class)]
         public Method $method = Method::Link,
     ) {
         $this->permanent = $permanent ?: false;
