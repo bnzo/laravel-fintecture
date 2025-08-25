@@ -1,6 +1,6 @@
 <?php
 
-use Bnzo\Fintecture\Data\PaymentData;
+use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Tests\FintectureTester;
 use Fintecture\Util\FintectureException;
@@ -20,7 +20,7 @@ it('can throw an exception if token generation fails', function () {
         ),
     ], withToken: false);
 
-    $url = Fintecture::generate('mock_state', 'https://mock.redirect.uri', PaymentData::from([
+    $url = Fintecture::generate('mock_state', 'https://mock.redirect.uri', PaymentRequestData::from([
         'meta' => [
             'psu_name' => 'Julien Lefebvre',
             'psu_email' => 'julien.lefebre@my-business-sarl.com',

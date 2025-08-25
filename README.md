@@ -42,10 +42,27 @@ return [
 ## Usage
 
 ```php
+use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Facades\Fintecture;
 
-$response = Fintecture::generateUrl();
-echo $response->json('meta.session_id');
+$paymentData = PaymentRequestData::from([
+    'meta' => [
+        'psu_name' => 'Julien Lefebvre',
+        'psu_email' => 'julien.lefebre@my-business-sarl.com',
+    ],
+    'data' => [
+        'attributes' => [
+            'amount' => '272.00',
+            'currency' => 'EUR',
+            'communication' => 'test',
+        ],
+    ],
+]);
+
+$paymentResponseData = Fintecture::generate('state', 'https://redirect.uri', $paymentData);
+
+$paymentResponseData->url; //https://fintecture.com/v2/85b0a547-5c18-4a16-b93b-2a4f5f03127d
+$paymentResponseData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
 ```
 
 ## Testing

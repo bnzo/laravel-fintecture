@@ -3,7 +3,8 @@
 namespace Bnzo\Fintecture;
 
 use Bnzo\Fintecture\Data\ConfigData;
-use Bnzo\Fintecture\Data\PaymentData;
+use Bnzo\Fintecture\Data\PaymentRequestData;
+use Bnzo\Fintecture\Data\PaymentResponseData;
 use Fintecture\PisClient;
 use Fintecture\Util\FintectureException;
 use Psr\Http\Client\ClientInterface;
@@ -17,7 +18,7 @@ class Fintecture
         $this->pisClient = new PisClient($configDTO->toArray(), $this->client);
     }
 
-    public function generate(string $state, string $redirectUri, PaymentData $paymentDTO)
+    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentDTO): PaymentResponseData
     {
         $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
         $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
@@ -34,7 +35,7 @@ class Fintecture
             redirectUri: $redirectUri, // replace with your redirect URI
         );
         if (! $connect->error) {
-            return $connect->meta->url; // @phpstan-ignore-line
+            return PaymentResponseData::from((array) $connect->result->meta);
         } else {
             throw new FintectureException($connect->errorMsg);
         }
