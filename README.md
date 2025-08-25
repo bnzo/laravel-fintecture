@@ -36,6 +36,8 @@ return [
     'app_id' => env('FINTECTURE_APP_ID'),
     'app_secret' => env('FINTECTURE_APP_SECRET'),
     'base_url' => env('FINTECTURE_BASE_URL'),
+    'environement' => env('FINTECTURE_ENVIRONMENT', 'sandbox'), // sandbox or production
+    'private_key' => env('FINTECTURE_PRIVATE_KEY') // base64 encoded private key
 ];
 ```
 
