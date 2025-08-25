@@ -7,7 +7,7 @@ use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
 
 beforeEach(function () {
-    $this->PaymentDTO = PaymentRequestData::from([
+    $this->PaymentRequestData = PaymentRequestData::from([
         'meta' => [
             'psu_name' => 'Julien Lefebvre',
             'psu_email' => 'julien.lefebre@my-business-sarl.com',
@@ -15,7 +15,6 @@ beforeEach(function () {
         'data' => [
             'attributes' => [
                 'amount' => '272.00',
-                'currency' => 'EUR',
                 'communication' => 'test',
             ],
         ],
@@ -32,7 +31,7 @@ it('can generate url', function () {
         ),
     ], );
 
-    $paymentResponseData = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
+    $paymentResponseData = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentRequestData);
 
     expect($paymentResponseData->url)->toBe('https://mock.url/fintecture');
     expect($paymentResponseData->sessionId)->toBe('mock_session_id');
@@ -52,6 +51,6 @@ it('can throw an exception generate url', function () {
         ),
     ]);
 
-    Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentDTO);
+    Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentRequestData);
 
 })->throws(FintectureException::class, 'mock_error_message');
