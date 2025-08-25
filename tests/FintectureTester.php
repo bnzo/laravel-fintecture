@@ -30,7 +30,7 @@ class FintectureTester
         ]);
 
         app()->singleton(Fintecture::class, function () use ($client) {
-            $configDTO = ConfigData::fromArray(config('fintecture'));
+            $configDTO = ConfigData::from(config('fintecture'));
 
             return new Fintecture($configDTO, $client);
         });
