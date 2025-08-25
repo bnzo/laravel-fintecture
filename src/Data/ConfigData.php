@@ -1,6 +1,6 @@
 <?php
 
-namespace Bnzo\Fintecture\DTO;
+namespace Bnzo\Fintecture\Data;
 
 use Bnzo\Fintecture\Casts\Base64PrivateKeyCast;
 use Bnzo\Fintecture\Enums\Environment;
@@ -9,7 +9,7 @@ use WendellAdriel\ValidatedDTO\Attributes\Map;
 use WendellAdriel\ValidatedDTO\Casting\EnumCast;
 use WendellAdriel\ValidatedDTO\ValidatedDTO;
 
-class ConfigDTO extends ValidatedDTO
+class ConfigData extends ValidatedDTO
 {
     #[Map(data: 'app_id')]
     public string $appId;

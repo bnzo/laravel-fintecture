@@ -2,7 +2,7 @@
 
 namespace Bnzo\Fintecture\Tests;
 
-use Bnzo\Fintecture\DTO\ConfigDTO;
+use Bnzo\Fintecture\Data\ConfigData;
 use Bnzo\Fintecture\Fintecture;
 use GuzzleHttp\Psr7\Response;
 use Http\Message\RequestMatcher\RequestMatcher;
@@ -30,7 +30,7 @@ class FintectureTester
         ]);
 
         app()->singleton(Fintecture::class, function () use ($client) {
-            $configDTO = ConfigDTO::fromArray(config('fintecture'));
+            $configDTO = ConfigData::fromArray(config('fintecture'));
 
             return new Fintecture($configDTO, $client);
         });

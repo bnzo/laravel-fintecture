@@ -2,7 +2,7 @@
 
 namespace Bnzo\Fintecture;
 
-use Bnzo\Fintecture\DTO\ConfigDTO;
+use Bnzo\Fintecture\Data\ConfigData;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -23,7 +23,7 @@ class FintectureServiceProvider extends PackageServiceProvider
     public function bootingPackage()
     {
         $this->app->singleton(Fintecture::class, function ($app) {
-            $configDTO = ConfigDTO::fromArray(config('fintecture'));
+            $configDTO = ConfigData::fromArray(config('fintecture'));
 
             return new Fintecture($configDTO);
         });
