@@ -18,7 +18,7 @@ class Fintecture
         $this->pisClient = new PisClient($configDTO->toArray(), $this->client);
     }
 
-    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentDTO): PaymentResponseData
+    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentData): PaymentResponseData
     {
         $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
         $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
@@ -30,7 +30,7 @@ class Fintecture
         }
 
         $connect = $this->pisClient->connect->generate(
-            data: $paymentDTO->toArray(),
+            data: $paymentData->toArray(),
             state: $state,
             redirectUri: $redirectUri, // replace with your redirect URI
         );
