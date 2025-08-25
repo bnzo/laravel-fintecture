@@ -1,5 +1,7 @@
 <?php
 
+use Bnzo\Fintecture\Data\PaymentAttributesData;
+use Bnzo\Fintecture\Data\PaymentCustomerData;
 use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Tests\FintectureTester;
@@ -54,3 +56,16 @@ it('can throw an exception generate url', function () {
     Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentRequestData);
 
 })->throws(FintectureException::class, 'mock_error_message');
+
+it('generate data', function () {
+    $paymentRequestData = new PaymentRequestData(
+        new PaymentAttributesData(
+            amount: '272.00',
+            communication: 'test'
+        ),
+        new PaymentCustomerData(
+            psu_email: 'julien.lefebre@my-business-sarl.com',
+            psu_name: 'Julien Lefebvre'
+        )
+    );
+});
