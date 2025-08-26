@@ -18,16 +18,22 @@ class Fintecture
         $this->pisClient = new PisClient($configDTO->toArray(), $this->client);
     }
 
-    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentData): PaymentResponseData
+    protected function setAccessToken()
     {
-        $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
-        $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
         $pisToken = $this->pisClient->token->generate();
         if (! $pisToken->error) {
             $this->pisClient->setAccessToken($pisToken); // set token of PIS client
         } else {
             throw new FintectureException($pisToken->errorMsg);
         }
+    }
+
+    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentData): PaymentResponseData
+    {
+        $this->setAccessToken();
+
+        $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
+        $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
 
         $connect = $this->pisClient->connect->generate(
             data: $paymentData->toArray(),
@@ -39,5 +45,20 @@ class Fintecture
         } else {
             throw new FintectureException($connect->errorMsg);
         }
+    }
+
+    public function getPayment($sessionId)
+    {
+        // be65006650f94e5cb04457d31a4e3651
+        $this->setAccessToken();
+
+        $payment = $this->pisClient->payment->get($sessionId);
+
+        if (! $payment->error) {
+            return PaymentResponseData::from((array) $payment->result->meta);
+        } else {
+            throw new FintectureException($payment->errorMsg);
+        }
+
     }
 }
