@@ -1,5 +1,9 @@
 <?php
 
 use Bnzo\Fintecture\Tests\TestCase;
+use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 
-uses(TestCase::class)->in(__DIR__);
+pest()
+    ->extend(TestCase::class)
+    ->use(LazilyRefreshDatabase::class)
+    ->in(__DIR__);
