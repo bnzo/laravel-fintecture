@@ -15,5 +15,7 @@ class PaymentAttributesData extends Data
         #[WithCast(EnumCast::class, Currency::class)]
         public ?Currency $currency = Currency::EUR,
         public string|Optional|null $communication = null,
-    ) {}
+    ) {
+        $this->communication = $communication ?: Optional::create();
+    }
 }
