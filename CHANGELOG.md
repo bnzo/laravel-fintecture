@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.1 - 2025-08-26
+
+### What's Changed
+
+* Refactor data constructors and add payment status enum by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/11
+* Refactor test execution and improve readability by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/12
+* Update Pest and its plugins to version 3.0 by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/13
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.0...v0.1.1
+
 ## v0.1.0 - 2025-08-25
 
 ### What's Changed
