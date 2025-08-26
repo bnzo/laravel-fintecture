@@ -10,12 +10,12 @@ class PaymentCustomerData extends Data
     public function __construct(
         public string $psu_email,
         public string $psu_name,
-        public string|Optional|null $psu_company = null,
-        public string|Optional|null $psu_form = null,
-        public string|Optional|null $psu_incorporation = null,
-        public string|Optional|null $psu_phone = null,
-        public string|Optional|null $psu_phone_prefix = null,
-        public string|Optional|null $psu_ip = null,
-        public AddressData|Optional|null $psu_address = null,
+        public string|Optional|null $psu_company,
+        public string|Optional|null $psu_form,
+        public string|Optional|null $psu_incorporation,
+        public string|Optional|null $psu_phone,
+        public string|Optional|null $psu_phone_prefix,
+        public string|Optional|null $psu_ip,
+        public AddressData|Optional|null $psu_address,
     ) {}
 }
