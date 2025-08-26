@@ -33,8 +33,6 @@ it('can generate url', function () {
         ),
     ], );
 
-    eval(\Psy\sh());
-
     $paymentResponseData = Fintecture::generate('mock_state', 'https://mock.redirect.uri', $this->PaymentRequestData);
 
     expect($paymentResponseData->url)->toBe('https://mock.url/fintecture');
