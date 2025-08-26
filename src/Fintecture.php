@@ -7,6 +7,7 @@ use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Data\PaymentResponseData;
 use Fintecture\PisClient;
 use Fintecture\Util\FintectureException;
+use Illuminate\Support\Facades\Cache;
 use Psr\Http\Client\ClientInterface;
 
 class Fintecture
@@ -20,20 +21,22 @@ class Fintecture
 
     protected function setAccessToken()
     {
-        $pisToken = $this->pisClient->token->generate();
-        if (! $pisToken->error) {
-            $this->pisClient->setAccessToken($pisToken); // set token of PIS client
-        } else {
-            throw new FintectureException($pisToken->errorMsg);
-        }
+        $pisToken = Cache::remember('fintecture_pis_access_token', now()->addHour()->subMinute(), function () {
+            $token = $this->pisClient->token->generate();
+
+            if ($token->error) {
+                throw new FintectureException($token->errorMsg);
+            }
+
+            return $token;
+        });
+
+        $this->pisClient->setAccessToken($pisToken);
     }
 
     public function generate(string $state, string $redirectUri, PaymentRequestData $paymentData): PaymentResponseData
     {
         $this->setAccessToken();
-
-        $state = uniqid(); // it's my transaction ID, I have to generate it myself, it will be sent back in the callback
-        $redirectUri = 'https://fintecture.agicom.fr/callback'; // replace with your redirect URI
 
         $connect = $this->pisClient->connect->generate(
             data: $paymentData->toArray(),
