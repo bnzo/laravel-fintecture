@@ -17,7 +17,8 @@ class FintectureServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-fintecture')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasRoutes('web');
     }
 
     public function bootingPackage()
