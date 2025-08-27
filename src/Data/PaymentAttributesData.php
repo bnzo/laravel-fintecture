@@ -11,8 +11,8 @@ class PaymentAttributesData extends Data
 {
     public function __construct(
         public string $amount,
-        #[WithCast(EnumCast::class, Currency::class)]
         public string $communication,
+        #[WithCast(EnumCast::class, Currency::class)]
         public ?Currency $currency = Currency::EUR,
     ) {}
 }
