@@ -14,10 +14,7 @@ class PaymentUnsuccessful
     /**
      * Create a new event instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(public string $sessionId) {}
 
     /**
      * Get the channels the event should broadcast on.
