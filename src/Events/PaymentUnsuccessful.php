@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Events;
+namespace Bnzo\Fintecture\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentCreated
+class PaymentUnsuccessful
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
