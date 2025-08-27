@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.2 - 2025-08-27
+
+### What's Changed
+
+* Refactor PaymentAttributesData for clarity and simplicity by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/14
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.1...v0.1.2
+
 ## v0.1.1 - 2025-08-26
 
 ### What's Changed
