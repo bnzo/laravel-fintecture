@@ -1,8 +1,8 @@
 <?php
 
-use App\Events\PaymentCreated;
-use App\Events\PaymentUnsuccessful;
 use Bnzo\Fintecture\Enums\PaymentStatus;
+use Bnzo\Fintecture\Events\PaymentCreated;
+use Bnzo\Fintecture\Events\PaymentUnsuccessful;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
