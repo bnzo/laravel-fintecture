@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.3 - 2025-08-27
+
+### What's Changed
+
+* Add PaymentCreated and PaymentUnsuccessful events with broadcasting capabilities by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/15
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.2...v0.1.3
+
 ## v0.1.2 - 2025-08-27
 
 ### What's Changed
