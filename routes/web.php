@@ -14,6 +14,7 @@ Route::prefix('fintecture')->group(function () {
         match ($status) {
             PaymentStatus::PaymentCreated->value => PaymentCreated::dispatch($sessionId),
             PaymentStatus::PaymentUnsuccessful->value => PaymentUnsuccessful::dispatch($sessionId),
+            default => null,
         };
     });
 });
