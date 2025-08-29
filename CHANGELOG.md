@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.4 - 2025-08-29
+
+### What's Changed
+
+* Refactor PaymentSplitter split method for clarity and accuracy by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/16
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.3...v0.1.4
+
 ## v0.1.3 - 2025-08-27
 
 ### What's Changed
