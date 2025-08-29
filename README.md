@@ -64,9 +64,8 @@ $paymentData = new PaymentRequestData(
     );
 
 $paymentResponseData = Fintecture::generate(
-    state: 'state', 
-    redirectUri: 'https://redirect.uri', 
     paymentData: $paymentData
+    redirectUri: 'https://redirect.uri', 
 );
 
 $paymentResponseData->url; //https://fintecture.com/v2/85b0a547-5c18-4a16-b93b-2a4f5f03127d
@@ -83,8 +82,8 @@ use Bnzo\Fintecture\Data\PaymentRequestData;
 $paymentRequestData = new PaymentRequestData(
     new PaymentAttributesData(
         amount: '272.00',
-        currency: Currency::EUR, // default EUR
         communication: 'test',
+        currency: Currency::EUR, // default EUR
     ),
     new PaymentCustomerData(
         psu_email: 'julien.lefebre@my-business-sarl.com',

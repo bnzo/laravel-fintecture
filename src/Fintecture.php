@@ -34,14 +34,14 @@ class Fintecture
         $this->pisClient->setAccessToken($pisToken);
     }
 
-    public function generate(string $state, string $redirectUri, PaymentRequestData $paymentData): PaymentResponseData
+    public function generate(PaymentRequestData $paymentData, ?string $redirectUri = null): PaymentResponseData
     {
         $this->setAccessToken();
 
         $connect = $this->pisClient->connect->generate(
             data: $paymentData->toArray(),
-            state: $state,
-            redirectUri: $redirectUri, // replace with your redirect URI
+            state: $paymentData->attributes->communication,
+            redirectUri: $redirectUri,
         );
         if (! $connect->error) {
             return PaymentResponseData::from((array) $connect->result->meta);
