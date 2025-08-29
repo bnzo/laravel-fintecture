@@ -6,7 +6,7 @@ class PaymentSplitter
 {
     public static function split(float $amount, int $parts): array
     {
-        $totalCents = round($amount * 100);
+        $totalCents = (int) round($amount * 100);
         $baseCents = intdiv($totalCents, $parts);
         $remainder = $totalCents % $parts;
 
