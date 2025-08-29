@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.6 - 2025-08-29
+
+### What's Changed
+
+* Refactor payment handling to use PaymentData structure by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/18
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.5...v0.1.6
+
 ## v0.1.5 - 2025-08-29
 
 ### What's Changed
