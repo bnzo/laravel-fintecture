@@ -4,36 +4,17 @@ namespace Bnzo\Fintecture\Utils;
 
 class PaymentSplitter
 {
-    /**
-     * Split an amount into N parts (default 3),
-     * with the last part adjusted for rounding differences.
-     */
-    public static function split(float $amount, int $partsCount = 3): array
+    public static function split(float $amount, int $parts): array
     {
-        if ($amount <= 0) {
-            throw new \InvalidArgumentException('Amount must be greater than zero.');
-        }
-
-        if ($partsCount <= 0) {
-            throw new \InvalidArgumentException('Parts count must be greater than zero.');
-        }
-
-        // Convert to cents
         $totalCents = (int) round($amount * 100);
+        $baseCents = intdiv($totalCents, $parts);
+        $remainder = $totalCents % $parts;
 
-        // Compute first split in cents using ceil to make last split smaller
-        $firstSplitCents = (int) ceil($totalCents / $partsCount);
+        $payments = [];
+        for ($i = 0; $i < $parts; $i++) {
+            $payments[] = ($baseCents + ($i < $remainder ? 1 : 0)) / 100;
+        }
 
-        $splits = array_fill(0, $partsCount - 1, $firstSplitCents);
-
-        // Last split = remaining cents
-        $lastSplitCents = $totalCents - array_sum($splits);
-
-        $splits[] = $lastSplitCents;
-
-        // Convert back to dollars with 2 decimals
-        $splits = array_map(fn ($c) => round($c / 100, 2), $splits);
-
-        return $splits;
+        return $payments;
     }
 }
