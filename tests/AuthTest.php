@@ -20,7 +20,7 @@ it('can throw an exception if token generation fails', function () {
         ),
     ], withToken: false);
 
-    $url = Fintecture::generate('mock_state', 'https://mock.redirect.uri', PaymentRequestData::from([
+    $url = Fintecture::generate(PaymentRequestData::from([
         'meta' => [
             'psu_name' => 'Julien Lefebvre',
             'psu_email' => 'julien.lefebre@my-business-sarl.com',
