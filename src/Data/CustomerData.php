@@ -5,7 +5,7 @@ namespace Bnzo\Fintecture\Data;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
-class PaymentCustomerData extends Data
+class CustomerData extends Data
 {
     public function __construct(
         public string $psu_email,

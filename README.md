@@ -52,24 +52,24 @@ Please refer to the next section if you need more payment parameters such as cur
 use Bnzo\Fintecture\Data\PaymentRequestData;
 use Bnzo\Fintecture\Facades\Fintecture;
 
-$paymentData = new PaymentRequestData(
-        new PaymentAttributesData(
+$paymentData = new PaymentData(
+        new AttributesData(
             amount: '272.00',
             communication: 'test'
         ),
-        new PaymentCustomerData(
+        new CustomerData(
             psu_email: 'julien.lefebre@my-business-sarl.com',
             psu_name: 'Julien Lefebvre'
         )
     );
 
-$paymentResponseData = Fintecture::generate(
+$sessionData = Fintecture::generate(
     paymentData: $paymentData
     redirectUri: 'https://redirect.uri', 
 );
 
-$paymentResponseData->url; //https://fintecture.com/v2/85b0a547-5c18-4a16-b93b-2a4f5f03127d
-$paymentResponseData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
+$sessionData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
+$sessionData->url; //https://fintecture.com/v2/85b0a547-5c18-4a16-b93b-2a4f5f03127d
 ```
 
 ### Create a PaymentRequestData
@@ -77,15 +77,15 @@ $paymentResponseData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
 Not all data fields are mandatory, please refer to each Data classes to see what you can use and what are default values.
 
 ```php
-use Bnzo\Fintecture\Data\PaymentRequestData;
+use Bnzo\Fintecture\Data\PaymentData;
 
-$paymentRequestData = new PaymentRequestData(
-    new PaymentAttributesData(
+$paymentRequestData = new PaymentData(
+    new AttributesData(
         amount: '272.00',
         communication: 'test',
         currency: Currency::EUR, // default EUR
     ),
-    new PaymentCustomerData(
+    new CustomerData(
         psu_email: 'julien.lefebre@my-business-sarl.com',
         psu_name: 'Julien Lefebvre',
         psu_address: new AddressData(
@@ -95,7 +95,7 @@ $paymentRequestData = new PaymentRequestData(
             country: 'FR',
         ),
     ),
-    new PaymentSettingsData(
+    new SettingsData(
         permanent: false, // default false
         expiry: 86400, // default 84000
         due_date: 86400, // default 84000

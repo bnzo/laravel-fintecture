@@ -1,23 +1,28 @@
 <?php
 
-use Bnzo\Fintecture\Data\PaymentAttributesData;
-use Bnzo\Fintecture\Data\PaymentCustomerData;
-use Bnzo\Fintecture\Data\PaymentRequestData;
+use Bnzo\Fintecture\Data\AttributesData;
+use Bnzo\Fintecture\Data\CustomerData;
+use Bnzo\Fintecture\Data\PaymentData;
+use Bnzo\Fintecture\Data\SettingsData;
+use Bnzo\Fintecture\Enums\Method;
+use Bnzo\Fintecture\Enums\ScheduledExpirationPolicy;
 use Bnzo\Fintecture\Facades\Fintecture;
 use Bnzo\Fintecture\Tests\FintectureTester;
 use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
 
 beforeEach(function () {
-    $this->PaymentRequestData = PaymentRequestData::from([
+    $this->paymentData = PaymentData::from([
         'meta' => [
             'psu_name' => 'Julien Lefebvre',
-            'psu_email' => 'julien.lefebre@my-business-sarl.com',
+            'psu_email' => 'nbenzoni@agicom.fr',
+            'method' => 'email',
         ],
         'data' => [
             'attributes' => [
                 'amount' => '272.00',
                 'communication' => 'test',
+                'language' => 'fr',
             ],
         ],
     ]);
@@ -29,14 +34,15 @@ it('can generate url', function () {
             body: json_encode(['meta' => [
                 'url' => 'https://mock.url/fintecture',
                 'session_id' => 'mock_session_id',
+                'status' => 201,
             ]])
         ),
     ], );
 
-    $paymentResponseData = Fintecture::generate($this->PaymentRequestData);
+    $sessionData = Fintecture::generate($this->paymentData);
 
-    expect($paymentResponseData->url)->toBe('https://mock.url/fintecture');
-    expect($paymentResponseData->sessionId)->toBe('mock_session_id');
+    expect($sessionData->url)->toBe('https://mock.url/fintecture');
+    expect($sessionData->sessionId)->toBe('mock_session_id');
 });
 
 it('can throw an exception generate url', function () {
@@ -53,19 +59,27 @@ it('can throw an exception generate url', function () {
         ),
     ]);
 
-    Fintecture::generate($this->PaymentRequestData);
+    Fintecture::generate($this->paymentData);
 
 })->throws(FintectureException::class, 'mock_error_message');
 
 it('generate data', function () {
-    $paymentRequestData = new PaymentRequestData(
-        new PaymentAttributesData(
+    $paymentData = new PaymentData(
+        new AttributesData(
             amount: '272.00',
-            communication: 'test'
+            communication: 'test',
         ),
-        new PaymentCustomerData(
+        new CustomerData(
             psu_email: 'julien.lefebre@my-business-sarl.com',
             psu_name: 'Julien Lefebvre'
+        ),
+        new SettingsData(
+            expiry: 86400,
+            due_date: 86400,
+            permanent: false,
+            scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate,
+            method: Method::Sms,
         )
     );
+
 });
