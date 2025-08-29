@@ -3,8 +3,8 @@
 namespace Bnzo\Fintecture;
 
 use Bnzo\Fintecture\Data\ConfigData;
-use Bnzo\Fintecture\Data\PaymentRequestData;
-use Bnzo\Fintecture\Data\PaymentResponseData;
+use Bnzo\Fintecture\Data\PaymentData;
+use Bnzo\Fintecture\Data\SessionData;
 use Fintecture\PisClient;
 use Fintecture\Util\FintectureException;
 use Illuminate\Support\Facades\Cache;
@@ -34,17 +34,18 @@ class Fintecture
         $this->pisClient->setAccessToken($pisToken);
     }
 
-    public function generate(PaymentRequestData $paymentData, ?string $redirectUri = null): PaymentResponseData
+    public function generate(PaymentData $paymentData, ?string $redirectUri = null): SessionData
     {
         $this->setAccessToken();
 
-        $connect = $this->pisClient->connect->generate(
+        $connect = $this->pisClient->requestToPay->generate(
             data: $paymentData->toArray(),
+            xLanguage: $paymentData->attributes->language,
             state: $paymentData->attributes->communication,
             redirectUri: $redirectUri,
         );
         if (! $connect->error) {
-            return PaymentResponseData::from((array) $connect->result->meta);
+            return SessionData::from((array) $connect->result->meta);
         } else {
             throw new FintectureException($connect->errorMsg);
         }
@@ -58,7 +59,7 @@ class Fintecture
         $payment = $this->pisClient->payment->get($sessionId);
 
         if (! $payment->error) {
-            return PaymentResponseData::from((array) $payment->result->meta);
+            return SessionData::from((array) $payment->result->meta);
         } else {
             throw new FintectureException($payment->errorMsg);
         }

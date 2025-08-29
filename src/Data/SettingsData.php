@@ -8,7 +8,7 @@ use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\EnumCast;
 use Spatie\LaravelData\Data;
 
-class PaymentSettingsData extends Data
+class SettingsData extends Data
 {
     public function __construct(
         public int $expiry = 86400,
