@@ -42,7 +42,7 @@ class Fintecture
             data: $paymentData->toArray(),
             xLanguage: $paymentData->attributes->language,
             state: $paymentData->attributes->state instanceof \Spatie\LaravelData\Optional ? null : $paymentData->attributes->state,
-            redirectUri: $paymentData->attributes->redirectUri instanceof \Spatie\LaravelData\Optional ? null : $paymentData->attributes->redirectUri,
+            redirectUri: $paymentData->settings->redirectUri instanceof \Spatie\LaravelData\Optional ? null : $paymentData->settings->redirectUri,
         );
         if (! $connect->error) {
             return SessionData::from((array) $connect->result->meta);
