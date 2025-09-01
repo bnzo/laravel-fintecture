@@ -85,10 +85,8 @@ it('generate data', function () {
             due_date: 86400,
             permanent: false,
             scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate,
-            method: Method::Sms,
+            method: Method::Link,
         )
     );
-
-    eval(\Psy\sh());
 
 });
