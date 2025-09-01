@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.1.7 - 2025-09-01
+
+### What's Changed
+
+* Refactor webhook handling and enhance SessionData structure by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/19
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.6...v0.1.7
+
 ## v0.1.6 - 2025-08-29
 
 ### What's Changed
