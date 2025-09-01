@@ -63,7 +63,6 @@ class Fintecture
         $payment = $this->pisClient->payment->get($sessionId);
 
         if (! $payment->error) {
-            eval(\Psy\sh());
 
             return SessionData::from((array) $payment->result->meta);
         } else {
