@@ -31,7 +31,7 @@ it('can get payment', function () {
         ),
     ], );
 
-    $paymentResponseData = Fintecture::getPayment('22c868b147cc4684aef0d21dfaa919c8');
+    $paymentResponseData = Fintecture::getPayment('f2b05d307f684049b204c8a8d127ca71');
 
     // expect($paymentResponseData->status)->toBe(PaymentStatus::PaymentCreated);
     expect($paymentResponseData->sessionId)->toBe('mock_session_id');
