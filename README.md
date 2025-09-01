@@ -85,7 +85,6 @@ $paymentRequestData = new PaymentData(
         currency: Currency::EUR, // default Currency::EUR
         language: 'en' //default App::getLocale()
         state: "1" //default null
-        redirectUri: "https://myapp.test/finctecture/callback" //default null
     ),
     new CustomerData(
         email: 'julien.lefebre@my-business-sarl.com',
@@ -98,11 +97,12 @@ $paymentRequestData = new PaymentData(
         ),
     ),
     new SettingsData(
-        permanent: false, // default false
-        expiry: 86400, // default 84000
         due_date: 86400, // default 84000
-        scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate, // default Immediate
+        expiry: 86400, // default 84000
         method: Method::Link // default Link
+        permanent: false, // default false
+        redirectUri: "https://myapp.test/finctecture/callback" //default null
+        scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate, // default Immediate
     ),
 );
 ```
