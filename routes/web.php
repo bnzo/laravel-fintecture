@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('fintecture')->group(function () {
     Route::post('/webhook', function (Request $request) {
-
         // event payment_session.transfer_states.completed
         // event payment_session.status.payment_created
 

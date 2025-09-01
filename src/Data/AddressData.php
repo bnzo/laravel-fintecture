@@ -12,6 +12,7 @@ class AddressData extends Data
         public string $zip,
         public string $city,
         public string $country,
-        public string|Optional|null $number,
-        public string|Optional|null $complement, ) {}
+        public string|Optional|null $number = null,
+        public string|Optional|null $complement = null,
+    ) {}
 }

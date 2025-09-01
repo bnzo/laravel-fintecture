@@ -58,14 +58,13 @@ $paymentData = new PaymentData(
             communication: 'test'
         ),
         new CustomerData(
-            psu_email: 'julien.lefebre@my-business-sarl.com',
-            psu_name: 'Julien Lefebvre'
+            email: 'julien.lefebre@my-business-sarl.com',
+            name: 'Julien Lefebvre'
         )
     );
 
 $sessionData = Fintecture::generate(
     paymentData: $paymentData
-    redirectUri: 'https://redirect.uri', 
 );
 
 $sessionData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
@@ -82,13 +81,15 @@ use Bnzo\Fintecture\Data\PaymentData;
 $paymentRequestData = new PaymentData(
     new AttributesData(
         amount: '272.00',
-        communication: 'test',
-        currency: Currency::EUR, // default EUR
+        communication: 'Order #1',
+        currency: Currency::EUR, // default Currency::EUR
+        language: 'en' //default App::getLocale()
+        state: "1" //default null
     ),
     new CustomerData(
-        psu_email: 'julien.lefebre@my-business-sarl.com',
-        psu_name: 'Julien Lefebvre',
-        psu_address: new AddressData(
+        email: 'julien.lefebre@my-business-sarl.com',
+        name: 'Julien Lefebvre',
+        address: new AddressData(
             street: '1 rue de la paix',
             zip: '75000',
             city: 'Paris',
@@ -96,11 +97,12 @@ $paymentRequestData = new PaymentData(
         ),
     ),
     new SettingsData(
-        permanent: false, // default false
-        expiry: 86400, // default 84000
         due_date: 86400, // default 84000
-        scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate, // default Immediate
+        expiry: 86400, // default 84000
         method: Method::Link // default Link
+        permanent: false, // default false
+        redirectUri: "https://myapp.test/finctecture/callback" //default null
+        scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate, // default Immediate
     ),
 );
 ```
