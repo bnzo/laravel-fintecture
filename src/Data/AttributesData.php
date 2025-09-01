@@ -4,10 +4,10 @@ namespace Bnzo\Fintecture\Data;
 
 use Bnzo\Fintecture\Enums\Currency;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Optional;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\EnumCast;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Optional;
 
 class AttributesData extends Data
 {
@@ -21,6 +21,7 @@ class AttributesData extends Data
         public ?string $language = null
     ) {
         $this->state = $state ?: Optional::create();
+        $this->redirectUri = $redirectUri ?: Optional::create();
         $this->language = $language ?? App::getLocale();
     }
 }
