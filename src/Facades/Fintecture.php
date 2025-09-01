@@ -2,6 +2,8 @@
 
 namespace Bnzo\Fintecture\Facades;
 
+use Bnzo\Fintecture\Data\PaymentData;
+use Bnzo\Fintecture\Data\SessionData;
 use Illuminate\Support\Facades\Facade;
 
 /**
