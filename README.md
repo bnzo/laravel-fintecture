@@ -107,6 +107,42 @@ $paymentRequestData = new PaymentData(
 );
 ```
 
+### Webhooks
+Webhooks can be receive at this url => /finctecure/webhook.\
+Make sure to configure your fintecture app and disable CSRF tokens for this route in you bootstrap app.php file:
+
+```php
+//bootstrap/app.php
+    ...
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->validateCsrfTokens(except: [
+            '/fintecture/webhook',
+        ]);
+    })
+    ...
+```
+
+Then you can create a listen like so:
+
+```php
+// app/Listeners/ValidateBankTransfer.php
+namespace App\Listeners;
+use Bnzo\Fintecture\Events\PaymentCreated;
+
+class ValidateBankTransfer
+{
+    public function handle(PaymentCreated $event): void
+    {
+        return "payment validated for session {$event->sessionId}";
+    }
+}
+```
+
+For now, you can create listeners for the following events:
+
+`PaymentCreated` and `PaymentUnsuccessful`
+
+
 ## Testing
 
 ```bash
