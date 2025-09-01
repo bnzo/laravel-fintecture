@@ -1,5 +1,6 @@
 <?php
 
+use Bnzo\Fintecture\Data\AddressData;
 use Bnzo\Fintecture\Data\AttributesData;
 use Bnzo\Fintecture\Data\CustomerData;
 use Bnzo\Fintecture\Data\PaymentData;
@@ -70,8 +71,14 @@ it('generate data', function () {
             communication: 'test',
         ),
         new CustomerData(
-            psu_email: 'julien.lefebre@my-business-sarl.com',
-            psu_name: 'Julien Lefebvre'
+            email: 'julien.lefebre@my-business-sarl.com',
+            name: 'Julien Lefebvre',
+            address: new AddressData(
+                street: '123 Main St',
+                zip: '75001',
+                city: 'Paris',
+                country: 'FR'
+            )
         ),
         new SettingsData(
             expiry: 86400,
@@ -81,5 +88,7 @@ it('generate data', function () {
             method: Method::Sms,
         )
     );
+
+    eval(\Psy\sh());
 
 });
