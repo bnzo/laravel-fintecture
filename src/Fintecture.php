@@ -10,6 +10,10 @@ use Fintecture\Util\FintectureException;
 use Illuminate\Support\Facades\Cache;
 use Psr\Http\Client\ClientInterface;
 
+/**
+ * @method static SessionData generate(PaymentData $paymentData, ?string $redirectUri = null)
+ * @method static SessionData getPayment(string $sessionId)
+ */
 class Fintecture
 {
     protected PisClient $pisClient;
@@ -59,6 +63,7 @@ class Fintecture
         $payment = $this->pisClient->payment->get($sessionId);
 
         if (! $payment->error) {
+
             return SessionData::from((array) $payment->result->meta);
         } else {
             throw new FintectureException($payment->errorMsg);
