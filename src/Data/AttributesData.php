@@ -14,14 +14,12 @@ class AttributesData extends Data
     public function __construct(
         public string $amount,
         public string $communication,
-        #[WithCast(EnumCast::class, Currency::class)]
-        public string|Optional|null $redirectUri = null,
         public string|Optional|null $state = null,
+        #[WithCast(EnumCast::class, Currency::class)]
         public ?Currency $currency = Currency::EUR,
         public ?string $language = null
     ) {
         $this->state = $state ?: Optional::create();
-        $this->redirectUri = $redirectUri ?: Optional::create();
         $this->language = $language ?? App::getLocale();
     }
 }
