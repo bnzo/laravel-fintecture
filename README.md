@@ -58,8 +58,8 @@ $paymentData = new PaymentData(
             communication: 'test'
         ),
         new CustomerData(
-            psu_email: 'julien.lefebre@my-business-sarl.com',
-            psu_name: 'Julien Lefebvre'
+            email: 'julien.lefebre@my-business-sarl.com',
+            name: 'Julien Lefebvre'
         )
     );
 
@@ -88,9 +88,9 @@ $paymentRequestData = new PaymentData(
         redirectUri: "https://myapp.test/finctecture/callback" //default null
     ),
     new CustomerData(
-        psu_email: 'julien.lefebre@my-business-sarl.com',
-        psu_name: 'Julien Lefebvre',
-        psu_address: new AddressData(
+        email: 'julien.lefebre@my-business-sarl.com',
+        name: 'Julien Lefebvre',
+        address: new AddressData(
             street: '1 rue de la paix',
             zip: '75000',
             city: 'Paris',
