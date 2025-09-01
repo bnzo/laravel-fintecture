@@ -65,7 +65,6 @@ $paymentData = new PaymentData(
 
 $sessionData = Fintecture::generate(
     paymentData: $paymentData
-    redirectUri: 'https://redirect.uri', 
 );
 
 $sessionData->sessionId; //d2e30e2c0b9e4ce5b26f59dc386b21b2
@@ -82,8 +81,11 @@ use Bnzo\Fintecture\Data\PaymentData;
 $paymentRequestData = new PaymentData(
     new AttributesData(
         amount: '272.00',
-        communication: 'test',
-        currency: Currency::EUR, // default EUR
+        communication: 'Order #1',
+        currency: Currency::EUR, // default Currency::EUR
+        language: 'en' //default App::getLocale()
+        state: "1" //default null
+        redirectUri: "https://myapp.test/finctecture/callback" //default null
     ),
     new CustomerData(
         psu_email: 'julien.lefebre@my-business-sarl.com',
