@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Bnzo\Fintecture\Fintecture
+ *
+ * @method static SessionData generate(PaymentData $paymentData, ?string $redirectUri = null)
+ * @method static SessionData getPayment(string $sessionId)
  */
 class Fintecture extends Facade
 {
