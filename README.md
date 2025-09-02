@@ -7,9 +7,11 @@
 # Laravel Fintecture
 An opinionated Fintecture wrapper for Laravel apps.
 
-[![Coding Standards Action Status](https://github.com/bnzo/laravel-fintecture/workflows/coding-standards/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
-[![Static Analysis Action Status](https://github.com/bnzo/laravel-fintecture/workflows/static-analysis/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
-[![Tests Action Status](https://github.com/bnzo/laravel-fintecture/workflows/tests/badge.svg)](https://github.com/bnzo/laravel-fintecture/actions/workflows/tests.yml)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/bnzo/laravel-fintecture)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/bnzo/laravel-fintecture/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/bnzo/laravel-fintecture/actions/workflows/tests.yml)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/bnzo/laravel-fintecture/static-analysis.yml?branch=main&label=static-analysis&style=flat-square)](https://github.com/bnzo/laravel-fintecture/actions/workflows/static-analysis.yml)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/bnzo/laravel-fintecture/coding-standards.yml?branch=main&label=coding%20standards&style=flat-square)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/bnzo/laravel-fintecture)
 
 </div>
 
