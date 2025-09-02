@@ -110,10 +110,9 @@ $paymentRequestData = new PaymentData(
 ### Webhooks
 Webhooks can be receive at this url `/finctecure/webhook`
 
-1. Make sure to configure your fintecture app to send requests to your laravel app:
-
-<img width="777" height="280" alt="Screenshot 2025-09-02 at 15 13 12" src="https://github.com/user-attachments/assets/b6bb9fbd-cbef-4da0-b497-a125472f8114" />
-
+1. First, make sure to configure the webhook endpoint in your fintecture app:
+   
+<img width="777" height="280" alt="Screenshot 2025-09-02 at 15 13 12" src="https://github.com/user-attachments/assets/f06a936b-a5ca-428b-a8b8-baa108e4be8a" />
 
 2. Disable CSRF tokens for this route in you bootstrap app.php file:
 
@@ -129,6 +128,10 @@ Webhooks can be receive at this url `/finctecure/webhook`
 ```
 
 3. You can create a listener like so:
+
+```bash
+php artisan make:listener -e \\Bnzo\\Fintecture\\Events\\PayementCreated
+```
 
 ```php
 // app/Listeners/ValidateBankTransfer.php
