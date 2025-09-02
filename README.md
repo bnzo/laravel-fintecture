@@ -108,7 +108,7 @@ $paymentRequestData = new PaymentData(
 ```
 
 ### Webhooks
-Webhooks can be receive at this url => /finctecure/webhook.\
+Webhooks can be receive at this url `/finctecure/webhook`
 Make sure to configure your fintecture app and disable CSRF tokens for this route in you bootstrap app.php file:
 
 ```php
@@ -122,7 +122,7 @@ Make sure to configure your fintecture app and disable CSRF tokens for this rout
     ...
 ```
 
-Then you can create a listen like so:
+Then you can create a listener like so:
 
 ```php
 // app/Listeners/ValidateBankTransfer.php
@@ -133,12 +133,12 @@ class ValidateBankTransfer
 {
     public function handle(PaymentCreated $event): void
     {
-        return "payment validated for session {$event->sessionId}";
+        return "payment created for session {$event->sessionId}";
     }
 }
 ```
 
-For now, you can create listeners for the following events:
+For now, you can create listeners for the following events, but more can be added in the route file `web.php`
 
 `PaymentCreated` and `PaymentUnsuccessful`
 
