@@ -33,12 +33,4 @@ class ConfigData extends Data
             'environment' => ['string', 'in:sandbox,production'],
         ];
     }
-
-    protected function casts(): array
-    {
-        return [
-            'privateKey' => new Base64PrivateKeyCast,
-            'environment' => new EnumCast(Environment::class),
-        ];
-    }
 }
