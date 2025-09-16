@@ -6,5 +6,7 @@ it('setting', function () {
         expiresAt: now()->addHours(24),
     );
 
-    eval(\Psy\sh());
+    expect($settingsData->toArray()['due_date'])
+        ->toBeLessThanOrEqual(86400)
+        ->toBeGreaterThan(86300);
 });

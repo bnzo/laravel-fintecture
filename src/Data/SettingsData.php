@@ -29,11 +29,11 @@ class SettingsData extends Data
         #[MapOutputName('expiry')]
         public ?Carbon $expiresAt = null,
         #[WithCast(EnumCast::class, Method::class)]
-        public ?Method $method = Method::Link,
-        public ?bool $permanent = false,
+        public ?Method $method = null,
+        public ?bool $permanent = null,
         public string|Optional|null $redirectUri = null,
         #[WithCast(EnumCast::class, ScheduledExpirationPolicy::class)]
-        public ScheduledExpirationPolicy $scheduled_expiration_policy = ScheduledExpirationPolicy::Immediate,
+        public ?ScheduledExpirationPolicy $scheduled_expiration_policy = null,
     ) {
         $this->dueAt = $dueAt ?: now()->addHours(24);
         $this->expiresAt = $expiresAt ?: now()->addHours(24);
