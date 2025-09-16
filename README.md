@@ -13,9 +13,10 @@ An opinionated Fintecture wrapper for Laravel apps.
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/bnzo/laravel-fintecture/coding-standards.yml?branch=main&label=coding%20standards&style=flat-square)](https://github.com/bnzo/laravel-fintecture/actions/workflows/coding-standards.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/bnzo/laravel-fintecture.svg?style=flat-square)](https://packagist.org/packages/bnzo/laravel-fintecture)
 
+## ⚠️ Package under developement, do not use it in production. ⚠️
 </div>
 
-## ⚠️ Package under developement, do not use it in production. ⚠️
+
 
 ## Installation
 
