@@ -99,8 +99,8 @@ $paymentRequestData = new PaymentData(
         ),
     ),
     new SettingsData(
-        due_date: 86400, // default 84000
-        expiry: 86400, // default 84000
+        dueAt: now()->addDay(), // default 24h
+        expiresAt: now()->addDay(), // default 24h
         method: Method::Link // default Link
         permanent: false, // default false
         redirectUri: "https://myapp.test/finctecture/callback" //default null
