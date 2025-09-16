@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.0 - 2025-09-16
+
+### What's Changed
+
+* Refactor SettingsData to use Carbon for date handling by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/22
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.1.9...v0.2.0
+
 ## v0.1.9 - 2025-09-01
 
 ### What's Changed
