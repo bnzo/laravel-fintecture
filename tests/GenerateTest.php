@@ -81,8 +81,8 @@ it('generate data', function () {
             )
         ),
         new SettingsData(
-            expiry: 86400,
-            due_date: 86400,
+            expiresAt: now()->addHours(24),
+            dueAt: now()->addHours(24),
             permanent: false,
             scheduled_expiration_policy: ScheduledExpirationPolicy::Immediate,
             method: Method::Link,
