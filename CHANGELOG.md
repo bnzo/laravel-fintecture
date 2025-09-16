@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.1 - 2025-09-16
+
+### What's Changed
+
+* Refactor date properties to use DateTime instead of Carbon by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/23
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.2.0...v0.2.1
+
 ## v0.2.0 - 2025-09-16
 
 ### What's Changed
