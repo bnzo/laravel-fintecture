@@ -5,7 +5,7 @@ namespace Bnzo\Fintecture\Data;
 use Bnzo\Fintecture\Enums\Method;
 use Bnzo\Fintecture\Enums\ScheduledExpirationPolicy;
 use Bnzo\Fintecture\Transformers\CarbonDiffInSecondsTransformer;
-use DateTime;
+use DateTimeInterface;
 use Spatie\LaravelData\Attributes\MapInputName;
 use Spatie\LaravelData\Attributes\MapOutputName;
 use Spatie\LaravelData\Attributes\WithCast;
@@ -22,12 +22,12 @@ class SettingsData extends Data
         #[WithTransformer(CarbonDiffInSecondsTransformer::class)]
         #[MapInputName('due_date')]
         #[MapOutputName('due_date')]
-        public ?DateTime $dueAt = null,
+        public ?DateTimeInterface $dueAt = null,
         #[WithCast(DateTimeInterfaceCast::class, 'Y-m-d H:i:s')]
         #[WithTransformer(CarbonDiffInSecondsTransformer::class)]
         #[MapInputName('expiry')]
         #[MapOutputName('expiry')]
-        public ?DateTime $expiresAt = null,
+        public ?DateTimeInterface $expiresAt = null,
         #[WithCast(EnumCast::class, Method::class)]
         public ?Method $method = null,
         public ?bool $permanent = null,
