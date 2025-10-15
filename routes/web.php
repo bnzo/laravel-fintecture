@@ -5,6 +5,7 @@ use Bnzo\Fintecture\Events\PaymentCreated;
 use Bnzo\Fintecture\Events\PaymentUnsuccessful;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 Route::prefix('fintecture')->group(function () {
     Route::post('/webhook', function (Request $request) {
@@ -20,4 +21,10 @@ Route::prefix('fintecture')->group(function () {
             default => null,
         };
     });
+});
+
+Route::domain('console.fintecture.com')->group(function () {
+    URL::forceScheme('https');
+    Route::get(
+        '/payments/detail/'.config('fintecture.environment').'/{sessionId}', function ($sessionId) {})->name('fintecture.console');
 });
