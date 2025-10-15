@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.2 - 2025-10-15
+
+### What's Changed
+
+* Implement cancelPayment method with tests by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/25
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.2.1...v0.2.2
+
 ## v0.2.1 - 2025-09-16
 
 ### What's Changed
