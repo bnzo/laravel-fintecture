@@ -5,6 +5,7 @@ namespace Bnzo\Fintecture;
 use Bnzo\Fintecture\Data\ConfigData;
 use Bnzo\Fintecture\Data\PaymentData;
 use Bnzo\Fintecture\Data\SessionData;
+use Bnzo\Fintecture\Enums\PaymentStatus;
 use Fintecture\PisClient;
 use Fintecture\Util\FintectureException;
 use Illuminate\Support\Facades\Cache;
@@ -51,9 +52,8 @@ class Fintecture
         }
     }
 
-    public function getPayment($sessionId)
+    public function getPayment(string $sessionId): SessionData
     {
-        // be65006650f94e5cb04457d31a4e3651
         $this->setAccessToken();
 
         $payment = $this->pisClient->payment->get($sessionId);
@@ -65,5 +65,20 @@ class Fintecture
             throw new FintectureException($payment->errorMsg);
         }
 
+    }
+
+    public function cancelPayment(string $sessionId): bool
+    {
+        $this->setAccessToken();
+
+        $payment = $this->pisClient->payment->update($sessionId, ['meta' => ['status' => PaymentStatus::PaymentCancelled->value]]);
+
+        if (! $payment->error) {
+            $sessionData = SessionData::from((array) $payment->result->meta);
+
+            return $sessionData->status === 'payment_cancelled';
+        } else {
+            throw new FintectureException($payment->errorMsg);
+        }
     }
 }
