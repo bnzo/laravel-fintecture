@@ -22,25 +22,24 @@ class SettingsData extends Data
         #[WithTransformer(CarbonDiffInSecondsTransformer::class)]
         #[MapInputName('due_date')]
         #[MapOutputName('due_date')]
-        public ?DateTimeInterface $dueAt = null,
+        public DateTimeInterface|Optional|null $dueAt = null,
         #[WithCast(DateTimeInterfaceCast::class, 'Y-m-d H:i:s')]
         #[WithTransformer(CarbonDiffInSecondsTransformer::class)]
         #[MapInputName('expiry')]
         #[MapOutputName('expiry')]
-        public ?DateTimeInterface $expiresAt = null,
+        public DateTimeInterface|Optional|null $expiresAt = null,
         #[WithCast(EnumCast::class, Method::class)]
-        public ?Method $method = null,
-        public ?bool $permanent = null,
+        public Method|Optional|null $method = null,
+        public bool|Optional|null $permanent = null,
         public string|Optional|null $redirectUri = null,
         #[WithCast(EnumCast::class, ScheduledExpirationPolicy::class)]
-        public ?ScheduledExpirationPolicy $scheduled_expiration_policy = null,
+        public ScheduledExpirationPolicy|Optional|null $scheduled_expiration_policy = null,
     ) {
-        $this->dueAt = $dueAt ?: now()->addHours(24);
-        $this->expiresAt = $expiresAt ?: now()->addHours(24);
-        $this->method = $method ?: Method::Link;
-        $this->permanent = $permanent ?: false;
+        $this->dueAt = $dueAt ?: Optional::create();
+        $this->expiresAt = $expiresAt ?: Optional::create();
+        $this->method = $method ?: Optional::create();
+        $this->permanent = $permanent ?: Optional::create();
         $this->redirectUri = $redirectUri ?: Optional::create();
-        $this->scheduled_expiration_policy = $scheduled_expiration_policy ?: ScheduledExpirationPolicy::Immediate;
-
+        $this->scheduled_expiration_policy = $scheduled_expiration_policy ?: Optional::create();
     }
 }

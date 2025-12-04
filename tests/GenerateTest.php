@@ -13,20 +13,30 @@ use Fintecture\Util\FintectureException;
 use GuzzleHttp\Psr7\Response;
 
 beforeEach(function () {
-    $this->paymentData = PaymentData::from([
-        'meta' => [
-            'psu_name' => 'Julien Lefebvre',
-            'psu_email' => 'nbenzoni@agicom.fr',
-            'method' => 'email',
-        ],
-        'data' => [
-            'attributes' => [
-                'amount' => '272.00',
-                'communication' => 'test',
-                'language' => 'fr',
-            ],
-        ],
-    ]);
+    $this->paymentData = new PaymentData(
+        new AttributesData(
+            amount: '276.00',
+            communication: 'test',
+        ),
+        new CustomerData(
+            email: 'nbenzoni@agicom.fr',
+            name: 'Julien Lefebvre',
+            address: new AddressData(
+                number: '12',
+                complement: 'Apt 4B',
+                street: '123 Main St',
+                zip: '75001',
+                city: 'Paris',
+                country: 'FR'
+            )
+        ),
+        new SettingsData
+        // expiresAt: now()->addHours(24),
+        // dueAt: now()->addHours(24),
+        // permanent: true,
+        // scheduled_expiration_policy: ScheduledExpirationPolicy::Expire,
+        // method: Method::Email
+    );
 });
 
 it('can generate url', function () {
