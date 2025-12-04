@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.3 - 2025-12-04
+
+### What's Changed
+
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/bnzo/laravel-fintecture/pull/24
+* Refactor SettingsData and update GenerateTest usage by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/27
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/bnzo/laravel-fintecture/pull/26
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.2.2...v0.2.3
+
 ## v0.2.2 - 2025-10-15
 
 ### What's Changed
