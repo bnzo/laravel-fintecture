@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @method static SessionData generate(PaymentData $paymentData, ?string $redirectUri = null)
  * @method static SessionData getPayment(string $sessionId)
+ * @method static bool cancelPayment(string $sessionId)
  */
 class Fintecture extends Facade
 {
