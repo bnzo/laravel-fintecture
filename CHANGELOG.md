@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.4 - 2026-02-08
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/bnzo/laravel-fintecture/pull/28
+* Add cancelPayment method to Fintecture facade by @bnzo in https://github.com/bnzo/laravel-fintecture/pull/29
+
+**Full Changelog**: https://github.com/bnzo/laravel-fintecture/compare/v0.2.3...v0.2.4
+
 ## v0.2.3 - 2025-12-04
 
 ### What's Changed
