@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-fintecture` will be documented in this file.
 
+## v0.2.5 - 2026-09-16
+
+Add Laravel 13 support (illuminate/contracts ^13.0). Laravel 11 is no longer tested.
+
 ## v0.2.4 - 2026-02-08
 
 ### What's Changed
